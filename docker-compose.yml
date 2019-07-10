@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  db:
+    container_name: mydb
+    image: mariadb
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=example
+      - MYSQL_DATABASE=cromwell
+    volumes:
+      - ~/mariadb/data:/var/lib/mysql
+      - ~/mariadb/conf.d:/etc/mysql/conf.d
+
+
+  cromwell:
+    build:
+      context: .
+      dockerfile: ./dockerfile-dev
+    environment:
+      - cromwell=true
+    ports:
+      - "8080:8080"
+    command:
+      - ./start-cromwell-server.sh
+    volumes:
+      - ~/.config/:/root/.config
+      - ./:/app/
