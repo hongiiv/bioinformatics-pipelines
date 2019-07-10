@@ -30,9 +30,9 @@ RUN apt-get update && \
 ADD . /opt/cromwell
 WORKDIR /opt/cromwell
 
-RUN wget https://github.com/broadinstitute/cromwell/releases/download/43/cromwell-43.jar
+RUN wget https://github.com/broadinstitute/cromwell/releases/download/43/cromwell-43.jar -P /opt/cromwell
 
-COPY ./cromwell-43.jar ./
+#COPY ./cromwell-43.jar ./
 COPY ./start-cromwell-server.sh ./
 COPY ./google.conf ./
 COPY ./hello.wdl ./
