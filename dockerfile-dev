@@ -33,9 +33,9 @@ WORKDIR /opt/cromwell
 RUN wget https://github.com/broadinstitute/cromwell/releases/download/43/cromwell-43.jar -P /opt/cromwell
 
 #COPY ./cromwell-43.jar ./
-COPY ./start-cromwell-server.sh ./
-COPY ./google.conf ./
-COPY ./hello.wdl ./
+COPY ./start-cromwell-server.sh /opt/cromwell
+COPY ./google.conf /opt/cromwell
+COPY ./hello.wdl /opt/cromwell
 
 ##RUN ln -s /usr/local/bin/start-cromwell-server.sh /start-cromwell-server.sh
 ##RUN ln -s /usr/local/bin/cromwell-43.jar /cromwell-43.jar
