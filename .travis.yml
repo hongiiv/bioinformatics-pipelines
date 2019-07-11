@@ -29,6 +29,7 @@ script:
   - wget --server-response http://cromwell:8080/engine/v1/status
   - wget --server-response http://localhost:8080/engine/v1/status
   - wget --server-response http://127.0.0.1:8080/engine/v1/status
+  - ./test.sh
   
 after_script:
   - docker-compose down

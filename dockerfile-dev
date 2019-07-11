@@ -26,9 +26,11 @@ RUN apt-get update && \
     apt-get clean;
 
 #RUN wget https://github.com/broadinstitute/cromwell/releases/download/43/cromwell-43.jar -P /usr/local/bin
-  
+
+
 ADD . /opt/cromwell
 WORKDIR /opt/cromwell
+ADD https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh /opt/cromwell
 
 RUN wget https://github.com/broadinstitute/cromwell/releases/download/43/cromwell-43.jar -P /opt/cromwell
 
