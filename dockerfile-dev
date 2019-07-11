@@ -42,6 +42,6 @@ COPY ./test.sh /opt/cromwell
 ##RUN ln -s /usr/local/bin/cromwell-43.jar /cromwell-43.jar
 ##RUN ln -s /usr/local/bin/google.conf /google.conf
 
-#EXPOSE 8080
+EXPOSE 8080
 #CMD ["./start-cromwell-server.sh"]
 

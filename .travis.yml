@@ -17,8 +17,6 @@ addons:
   apt:
     packages:
       - docker-ce
-  hosts:
-    - cromwell.dev
 
 script:
   - ls -lah
@@ -27,7 +25,7 @@ script:
   - docker-compose exec cromwell pwd
   - docker-compose exec cromwell ls
   - docker-compose exec cromwell ps
-  - docker-compose exec cromwell wget --server-response http://cromwell.dev:8080/engine/v1/status
+  - docker-compose exec cromwell wget --server-response http://cromwell:8080/engine/v1/status
   
 after_script:
   - docker-compose down
