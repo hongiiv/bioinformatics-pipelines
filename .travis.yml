@@ -4,7 +4,7 @@ services:
   - docker
 
 env:
-  - DOCKER_COMPOSE_VERSION=1.4.2
+  golbal:
   - COMPOSE_FILE=docker-compose.yml
 
 before_install:
@@ -24,8 +24,9 @@ script:
   - docker-compose ps
   - docker-compose exec cromwell pwd
   - docker-compose exec cromwell ls
-  - docker-compose exec cromwell ps
-  - docker-compose exec cromwell wget --server-response http://cromwell:8080/engine/v1/status
+  - docker logs db
+  - docker logs cromwell
+  - ./test.sh
   
 after_script:
   - docker-compose down
