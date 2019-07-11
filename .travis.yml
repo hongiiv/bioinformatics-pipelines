@@ -21,7 +21,6 @@ addons:
 script:
   - ls -lah
   - docker-compose up -d --build
-  - ./wait-for-it.sh localhost:8080 -t 10
   - docker-compose ps
   - docker-compose exec cromwell pwd
   - docker-compose exec cromwell ls
