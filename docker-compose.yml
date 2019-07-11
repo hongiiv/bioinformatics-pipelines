@@ -23,8 +23,8 @@ services:
     ports:
       - "8080:8080"
     command:
-      - ./wait-for-it.sh mydb:3306 -t 30
-      - ./start-cromwell-server.sh
+      - /opt/cromwell/wait-for-it.sh mydb:3306 -t 30
+      - /opt/cromwell/start-cromwell-server.sh
     #volumes:
     #  - ~/.config/:/root/.config
     #  - ./:/app/
