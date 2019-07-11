@@ -20,14 +20,13 @@ addons:
 
 script:
   - ls -lah
-  - ./wait-for-it.sh mydb:3306 -t 10
-  - ./wait-for-it.sh cromwell:8080 -t 10
+  - ./wait-for-it.sh localhost:8080 -t 10
   - docker-compose up -d --build
   - docker-compose ps
   - docker-compose exec cromwell pwd
   - docker-compose exec cromwell ls
   - docker logs mydb
-  - docker logs --tail=100 cromwell
+  - docker logs cromwell
   - wget --server-response http://cromwell:8080/engine/v1/status
   - wget --server-response http://localhost:8080/engine/v1/status
   - wget --server-response http://127.0.0.1:8080/engine/v1/status

@@ -24,7 +24,8 @@ services:
       - "8080:8080"
     command:
       - ./start-cromwell-server.sh
-      
+      - ./wait-for-it.sh mydb:3306 -t 10
+      - ./wait-for-it.sh cromwell:8080 -t 10
     volumes:
       - ~/.config/:/root/.config
       - ./:/app/
