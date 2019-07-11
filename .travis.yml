@@ -1,11 +1,25 @@
-env:
-  - DOCKER_COMPOSE_VERSION=1.4.2
+sudo: required
+services:
+  - docker
 
-before_script:
-  - docker-compose up --build -d
+env:
+  COMPOSE_VERSION: 1.4.1
+
+before_install:
+ - curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+ - chmod +x docker-compose
+ - sudo mv docker-compose /usr/local/bin
 
 script:
+  - ls -lah
+  - docker-compose up -d --build
+  - docker-compose ps
+  - docker-compose run test
   - ./test.sh
   
 after_script:
   - docker-compose down
+
+notifications:
+  email:
+    - cb.hong@ngenebio.com
