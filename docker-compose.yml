@@ -14,6 +14,7 @@ services:
 
 
   cromwell:
+    container_name: cromwell
     build:
       context: .
       dockerfile: ./dockerfile-dev

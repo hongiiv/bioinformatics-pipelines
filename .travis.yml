@@ -20,11 +20,14 @@ addons:
 
 script:
   - ls -lah
-  - docker-compose up -d --build cromwell
+  - docker-compose up -d --build
   - docker-compose ps
   - docker-compose exec cromwell ls
   - docker-compose exec cromwell ls /opt/cromwell
   - docker-compose exec cromwell wget --server-response http://localhost:8080/engine/v1/status
+  - docker-compose exec cromwell wget --server-response http://cromwell:8080/engine/v1/status
+  - docker-compose exec cromwell bash /opt/cromwell/test.sh
+  - ./test.sh
 
   
 after_script:
