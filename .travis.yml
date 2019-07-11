@@ -20,6 +20,8 @@ addons:
 
 script:
   - ls -lah
+  - ./wait-for-it.sh mydb:3306 -t 10
+  - ./wait-for-it.sh cromwell:8080 -t 10
   - docker-compose up -d --build
   - docker-compose ps
   - docker-compose exec cromwell pwd
