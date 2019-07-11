@@ -23,8 +23,9 @@ script:
   - docker-compose up -d --build cromwell
   - docker-compose ps
   - docker-compose exec cromwell ls
-  - docker-compose exec cromwell /opt/cromwell/test.sh
-  - ./test.sh
+  - docker-compose exec cromwell ls /opt/cromwell
+  - docker-compose exec cromwell wget --server-response http://localhost:8080/engine/v1/status
+
   
 after_script:
   - docker-compose down
