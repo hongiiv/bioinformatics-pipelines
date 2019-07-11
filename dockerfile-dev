@@ -36,6 +36,7 @@ RUN wget https://github.com/broadinstitute/cromwell/releases/download/43/cromwel
 COPY ./start-cromwell-server.sh /opt/cromwell
 COPY ./google.conf /opt/cromwell
 COPY ./hello.wdl /opt/cromwell
+COPY ./test.sh /opt/cromwell
 
 ##RUN ln -s /usr/local/bin/start-cromwell-server.sh /start-cromwell-server.sh
 ##RUN ln -s /usr/local/bin/cromwell-43.jar /cromwell-43.jar

@@ -3,7 +3,8 @@ services:
   - docker
 
 env:
-  COMPOSE_VERSION: 1.4.1
+  - COMPOSE_VERSION: 1.4.1
+  - COMPOSE_FILE=docker-compose.yml
 
 before_install:
  - curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
@@ -12,9 +13,10 @@ before_install:
 
 script:
   - ls -lah
-  - docker-compose up -d --build
+  - docker-compose up -d --build cromwell
   - docker-compose ps
-  - docker-compose run test
+  - docker-compose exec cromwell ls
+  - docker-compose exec cromwell /opt/cromwell/test.sh
   - ./test.sh
   
 after_script:
