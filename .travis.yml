@@ -24,9 +24,11 @@ script:
   - docker-compose ps
   - docker-compose exec cromwell pwd
   - docker-compose exec cromwell ls
-  - docker logs db
-  - docker logs cromwell
-  - ./test.sh
+  - docker logs mydb
+  - docker logs --tail=100 cromwell
+  - wget --server-response http://cromwell:8080/engine/v1/status
+  - wget --server-response http://localhost:8080/engine/v1/status
+  - wget --server-response http://127.0.0.1:8080/engine/v1/status
   
 after_script:
   - docker-compose down
