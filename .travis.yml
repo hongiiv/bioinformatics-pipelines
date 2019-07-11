@@ -5,7 +5,7 @@ before_script:
   - docker-compose up --build -d
 
 script:
-  - java -jar /opt/cromwell/cromwell-43.jar submit /opt/cromwell/hello.wdl -h http://localhost:8080
-
+  - ./test.sh
+  
 after_script:
   - docker-compose down
